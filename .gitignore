@@ -8,3 +8,12 @@ __pycache__/
 .vscode/
 .csv_guard.license
 .csv_guard.usage
+private_key.txt
+private_key.pem
+tools/private_key.txt
+tools/private_key.pem
+public_key.pem
+tools/license*.json
+tools/license*.sig
+license*.json
+license*.sig
