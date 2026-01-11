@@ -1,5 +1,5 @@
 import unittest
-from csv_guard.schema_parser import parse_schema, SchemaError
+from tablint.schema_parser import parse_schema, SchemaError
 import os
 import json
 

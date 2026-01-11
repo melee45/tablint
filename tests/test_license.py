@@ -1,7 +1,7 @@
 import unittest
 import os
 import json
-from csv_guard.license import check_license, LicenseError
+from tablint.license import get_license_tier, LicenseError
 
 class TestLicense(unittest.TestCase):
     def setUp(self):
@@ -18,9 +18,11 @@ class TestLicense(unittest.TestCase):
         if os.path.exists(self.license_path):
             os.remove(self.license_path)
 
+
     def test_valid_license(self):
-        info = check_license()
-        self.assertEqual(info['tier'], 'free')
+        tier = get_license_tier()
+        self.assertEqual(tier, 'free')
+
 
     def test_invalid_signature(self):
         with open(self.license_path, 'w', encoding='utf-8') as f:
@@ -28,12 +30,24 @@ class TestLicense(unittest.TestCase):
             lic['signature'] = 'bad'
             json.dump(lic, f)
         with self.assertRaises(LicenseError):
-            check_license()
+            get_license_tier()
 
-    def test_missing_license(self):
+
+    def test_missing_license_defaults_to_free(self):
         os.remove(self.license_path)
-        with self.assertRaises(LicenseError):
-            check_license()
+        tier = get_license_tier()
+        self.assertEqual(tier, 'free')
+
+    def test_pro_license(self):
+        valid_payload = json.dumps({"tier": "pro"})
+        valid_license = {
+            "payload": valid_payload,
+            "signature": __import__('hashlib').sha256(valid_payload.encode('utf-8')).hexdigest()
+        }
+        with open(self.license_path, 'w', encoding='utf-8') as f:
+            json.dump(valid_license, f)
+        tier = get_license_tier()
+        self.assertEqual(tier, 'pro')
 
 if __name__ == "__main__":
     unittest.main()

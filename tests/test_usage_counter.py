@@ -1,6 +1,6 @@
 import unittest
 import os
-from csv_guard.usage_counter import load_counter, save_counter, check_and_increment, COUNTER_PATH, FREE_LIMIT
+from tablint.usage_counter import load_counter, save_counter, check_and_increment, COUNTER_PATH, FREE_LIMIT
 import datetime
 import json
 
@@ -33,7 +33,9 @@ class TestUsageCounter(unittest.TestCase):
         save_counter(FREE_LIMIT, datetime.date.today().strftime('%Y-%m'))
         with self.assertRaises(Exception) as ctx:
             check_and_increment('free')
-        self.assertIn('Free tier limit exceeded', str(ctx.exception))
+        msg = str(ctx.exception)
+        self.assertIn('Free tier limit exceeded', msg)
+        self.assertIn('Buy Pro', msg)
 
     def test_pro_unlimited(self):
         save_counter(1000, datetime.date.today().strftime('%Y-%m'))

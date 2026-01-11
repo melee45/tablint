@@ -41,10 +41,15 @@ def verify_signature(license_data: dict) -> bool:
     expected_sig = hashlib.sha256(payload.encode('utf-8')).hexdigest()
     return signature == expected_sig
 
-def check_license() -> dict:
+
+def get_license_tier() -> str:
+    """
+    Returns 'pro' if a valid license file is found, otherwise 'free'.
+    Only errors if a license file is present but invalid.
+    """
     license_data = load_license_file()
     if not license_data:
-        raise LicenseError('No license file found. Please place your license file in your home directory or current folder.')
+        return 'free'
     if not verify_signature(license_data):
         raise LicenseError('License signature verification failed. Please ensure your license file is valid.')
     # Parse payload
@@ -55,4 +60,4 @@ def check_license() -> dict:
     # Check required fields
     if 'tier' not in payload or payload['tier'] not in ('free', 'pro'):
         raise LicenseError('License tier is missing or invalid.')
-    return payload
+    return payload['tier']

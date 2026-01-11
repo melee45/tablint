@@ -1,5 +1,5 @@
 import unittest
-from csv_guard.validator import validate_row
+from tablint.validator import validate_row
 
 class TestValidator(unittest.TestCase):
     def setUp(self):
