@@ -95,7 +95,7 @@ Options:
 
 When the free limit is reached, tablint will stop and show a clear upgrade message.
 
-Buy Pro License: coming soon
+Buy Pro License: https://amimirog.gumroad.com/l/zmaku
 
 ---
 
