@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+*.sqlite3
+*.db
+.DS_Store
+.idea/
+.vscode/
+.csv_guard.license
+.csv_guard.usage
