@@ -1,10 +1,12 @@
+
 import os
 import json
 import datetime
 from typing import Tuple
 
+PRO_BUILD = False  # Set to True for Pro build
 COUNTER_PATH = os.path.expanduser('~/.csv_guard.usage')
-FREE_LIMIT = 50
+FREE_LIMIT = 50  # evaluation mode (limited validations)
 
 def load_counter(path: str = COUNTER_PATH) -> Tuple[int, str]:
     if not os.path.exists(path):
@@ -26,8 +28,8 @@ def check_and_increment(tier: str, path: str = COUNTER_PATH) -> None:
     if month != now_month:
         count = 0
         month = now_month
-    if tier == 'free' and count >= FREE_LIMIT:
+    if not PRO_BUILD and tier == 'free' and count >= FREE_LIMIT:
         # Do not increment or save if limit is hit
-        raise Exception(f"Free tier limit exceeded: {FREE_LIMIT} validations per month. Buy Pro for unlimited usage.")
+        raise Exception(f"Free tier limit exceeded: {FREE_LIMIT} validations. Buy Pro for unlimited usage.")
     count += 1
     save_counter(count, month, path)
