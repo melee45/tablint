@@ -6,6 +6,8 @@ tablint is a small, offline CLI tool that validates CSV files against a fixed sc
 
 No cloud. No AI. No surprises.
 
+👉 Product overview, pricing, and commercial license:
+**https://github.com/melee45/tablint/blob/master/index.html**
 ---
 
 ## Who this is for
@@ -38,7 +40,7 @@ Summary:
 ## What it does
 
 - Deterministic CSV validation
-- Simple, explicit JSON schema format
+- Explicit, fixed JSON schema
 - Clear, human-readable error messages
 - Optional machine-readable output (`--json`)
 - Fully offline (no network calls)
@@ -49,9 +51,9 @@ Summary:
 
 - No auto-fixing of data
 - No schema inference
+- No AI or heuristics
 - No cloud services or APIs
 - No telemetry or tracking
-- No payment processing inside the tool
 
 ---
 
@@ -82,32 +84,32 @@ Options:
 
 ---
 
-## Pricing
+## Licensing
 
-**Free tier**
-- 50 validations per month
-- Fully offline
-- No account required
+tablint includes a free evaluation mode with limited validations.
 
-**Pro license (one-time purchase)**
+For production use and CI/CD pipelines, a Pro license is required.
+
+- One-time purchase
 - Unlimited validations
 - CI/CD usage allowed
+- Fully offline
 
-When the free limit is reached, tablint will stop and show a clear upgrade message.
+👉 Details and purchase:
 
-Buy Pro License: https://amimirog.gumroad.com/l/zmaku
+**https://github.com/melee45/tablint/blob/master/index.html**
 
 ---
 
-## License & enforcement
+## License enforcement
 
-tablint uses **local, offline license verification**.
+All license enforcement is local and offline.
 
 - No network checks
 - No telemetry
 - No background services
 
-All enforcement happens on your machine.
+The tool never phones home.
 
 ---
 
