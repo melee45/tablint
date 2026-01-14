@@ -7,7 +7,7 @@ tablint is a small, offline CLI tool that validates CSV files against a fixed sc
 No cloud. No AI. No surprises.
 
 👉 Product overview, pricing, and commercial license:
-**https://github.com/melee45/tablint/blob/master/index.html**
+**https://melee45.github.io/tablint/**
 ---
 
 ## Who this is for
@@ -97,7 +97,7 @@ For production use and CI/CD pipelines, a Pro license is required.
 
 👉 Details and purchase:
 
-**https://github.com/melee45/tablint/blob/master/index.html**
+**https://melee45.github.io/tablint/**
 
 ---
 
@@ -117,3 +117,5 @@ The tool never phones home.
 
 **v1 behavior is frozen.**  
 Bug fixes only. No feature creep.
+
+**https://github.com/melee45/tablint**
