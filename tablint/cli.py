@@ -1,7 +1,6 @@
 from .csv_parser import parse_csv
 from .schema_parser import parse_schema, SchemaError
 from .validator import validate_csv
-from .license import check_license, LicenseError
 from .usage_counter import check_and_increment
 import argparse
 import sys
@@ -9,7 +8,7 @@ import json as _json
 
 def main():
 	parser = argparse.ArgumentParser(
-		description="csv-guard: Validate CSV files against a schema."
+		description="tablint: Validate CSV files against a schema."
 	)
 	parser.add_argument(
 		"validate",
@@ -47,9 +46,8 @@ def main():
 			from .license import get_license_tier, LicenseError
 			try:
 				tier = get_license_tier()
-			except LicenseError as e:
-				print(f"License error: {e}", file=sys.stderr)
-				sys.exit(1)
+			except Exception:
+				tier="free"
 
 			# Usage counter enforcement (only for free tier)
 			if tier == 'free':
